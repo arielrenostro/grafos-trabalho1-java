@@ -11,18 +11,18 @@ public class GrafosUtils {
 
 	public static void validarMatrizAdjacencia(int[][] matriz) throws MatrizAdjacenciaException {
 		if (null == matriz) {
-			throw new MatrizAdjacenciaException("Matriz n„o informada ou nula!");
+			throw new MatrizAdjacenciaException("Matriz n√£o informada ou nula!");
 		}
 
 		int[] colunas;
 		for (int idxLinha = 0; idxLinha < matriz.length; idxLinha++) {
 			colunas = matriz[idxLinha];
 			if (null == colunas) {
-				throw new MatrizAdjacenciaException("Colunas da linha [" + idxLinha + "] s„o nulas!");
+				throw new MatrizAdjacenciaException("Colunas da linha [" + idxLinha + "] s√£o nulas!");
 			}
 
 			if (matriz.length != colunas.length) {
-				throw new MatrizAdjacenciaException("Colunas da linha [" + idxLinha + "] n„o tem o mesmo tamanho!");
+				throw new MatrizAdjacenciaException("Colunas da linha [" + idxLinha + "] n√£o tem o mesmo tamanho!");
 			}
 		}
 	}
@@ -42,7 +42,6 @@ public class GrafosUtils {
 			nomes[idx] = preNome + ultimoChar;
 			ultimoChar++;
 		}
-
 		return nomes;
 	}
 
