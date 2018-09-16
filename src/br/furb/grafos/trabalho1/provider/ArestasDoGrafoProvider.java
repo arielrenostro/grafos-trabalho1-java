@@ -7,5 +7,5 @@ package br.furb.grafos.trabalho1.provider;
  */
 public interface ArestasDoGrafoProvider {
 
-	String arestasDoGrafo(String[][] matrizAdjacencia);
+	String arestasDoGrafo(int[][] matrizAdjacencia);
 }
