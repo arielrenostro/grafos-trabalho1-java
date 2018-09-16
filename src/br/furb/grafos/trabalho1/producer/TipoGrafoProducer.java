@@ -11,6 +11,7 @@ public class TipoGrafoProducer implements TipoGrafoProvider {
 
 	@Override
 	public String tipoDoGrafo(String[][] matrizAdjacencia) {
+		// TESTE
 		// TODO IMPLEMENTAR
 		return null;
 	}
