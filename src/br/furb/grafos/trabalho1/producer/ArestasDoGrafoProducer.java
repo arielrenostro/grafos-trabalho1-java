@@ -10,7 +10,7 @@ import br.furb.grafos.trabalho1.provider.ArestasDoGrafoProvider;
 public class ArestasDoGrafoProducer implements ArestasDoGrafoProvider {
 
 	@Override
-	public String arestasDoGrafo(String[][] matrizAdjacencia) {
+	public String arestasDoGrafo(int[][] matrizAdjacencia) {
 		// TODO IMPLEMENTAR
 		return null;
 	}

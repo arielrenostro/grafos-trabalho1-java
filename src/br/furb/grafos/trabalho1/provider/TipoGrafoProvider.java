@@ -1,5 +1,7 @@
 package br.furb.grafos.trabalho1.provider;
 
+import br.furb.grafos.trabalho1.exception.MatrizAdjacenciaException;
+
 /**
  *
  * @author ariel, sidnei
@@ -7,5 +9,5 @@ package br.furb.grafos.trabalho1.provider;
  */
 public interface TipoGrafoProvider {
 
-	String tipoDoGrafo(String[][] matrizAdjacencia);
+	String tipoDoGrafo(int[][] matrizAdjacencia) throws MatrizAdjacenciaException;
 }
