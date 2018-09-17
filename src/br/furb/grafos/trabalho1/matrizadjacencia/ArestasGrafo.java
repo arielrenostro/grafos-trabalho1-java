@@ -1,25 +1,23 @@
-package br.furb.grafos.trabalho1.producer;
+package br.furb.grafos.trabalho1.matrizadjacencia;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import br.furb.grafos.trabalho1.exception.MatrizAdjacenciaException;
-import br.furb.grafos.trabalho1.provider.ArestasDoGrafoProvider;
-import br.furb.grafos.trabalho1.utils.GrafosUtils;
+import br.furb.grafos.trabalho1.utils.MatrizAdjacenciaUtils;
 
 /**
  *
  * @author ariel, sidnei
  *
  */
-public class ArestasDoGrafoProducer implements ArestasDoGrafoProvider {
+public class ArestasGrafo  {
 
-	@Override
-	public String arestasDoGrafo(int[][] matrizAdjacencia) throws MatrizAdjacenciaException {
-		String[] nomes = GrafosUtils.getNomesVerticesMatrizAdjacencia(matrizAdjacencia);
+	public String getArestasGrafoPorMatrizAdjacencia(int[][] matrizAdjacencia) throws MatrizAdjacenciaException {
+		String[] nomes = MatrizAdjacenciaUtils.getNomesVerticesMatrizAdjacencia(matrizAdjacencia);
 
-		boolean dirigido = true; //TODO chamar metodo isDirigido
+		boolean dirigido = new TipoGrafo().isGrafoDirigidoPorMatrizAdjacencia(matrizAdjacencia);
 		List<String> listaNormal = new ArrayList<>();
 		//List<String> listaDirigido = new ArrayList<>();
 		//TODO caso queira dividir nos n dirigidos, fazer aqui

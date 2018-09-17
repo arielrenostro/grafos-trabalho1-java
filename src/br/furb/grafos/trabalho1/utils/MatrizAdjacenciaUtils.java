@@ -7,7 +7,7 @@ import br.furb.grafos.trabalho1.exception.MatrizAdjacenciaException;
  * @author ariel, sidnei
  *
  */
-public class GrafosUtils {
+public class MatrizAdjacenciaUtils {
 
 	public static void validarMatrizAdjacencia(int[][] matriz) throws MatrizAdjacenciaException {
 		if (null == matriz) {
