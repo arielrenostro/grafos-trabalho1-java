@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import br.furb.grafos.trabalho1.listaadjacencia.BuscaLarguraListaAdjacencia;
 
+/**
+ * @author ariel e sidnei
+ */
 public class BuscaLarguraListaAdjacenciaTest {
 
 	@Test

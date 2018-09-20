@@ -5,6 +5,9 @@ import org.junit.Test;
 
 import br.furb.grafos.trabalho1.problema.RatoNoLabirinto;
 
+/**
+ * @author ariel e sidnei
+ */
 public class RatoNoLabirintoTest {
 
 	private RatoNoLabirinto ratoNoLabirinto = new RatoNoLabirinto();

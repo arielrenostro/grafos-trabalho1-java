@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author ariel e sidnei
+ */
 public class ContextoRatoNoLabirinto {
 
 	private Map<String, Set<String>> listaAdjacencia = new HashMap<>();

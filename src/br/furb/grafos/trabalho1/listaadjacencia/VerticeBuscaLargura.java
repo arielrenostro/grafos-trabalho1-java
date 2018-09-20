@@ -1,5 +1,8 @@
 package br.furb.grafos.trabalho1.listaadjacencia;
 
+/**
+ * @author ariel e sidnei
+ */
 public class VerticeBuscaLargura {
 
 	private EstadoBusca estadoBusca = EstadoBusca.NAO_ENCONTRADO;

@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 import br.furb.grafos.trabalho1.listaadjacencia.BuscaLarguraListaAdjacencia;
 import br.furb.grafos.trabalho1.listaadjacencia.ResultadoBuscaLargura;
 
+/**
+ * @author ariel e sidnei
+ */
 public class RatoNoLabirinto {
 
 	private static final String ENTRADA = "ENTRADA";

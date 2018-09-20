@@ -4,6 +4,9 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author ariel e sidnei
+ */
 public class BuscaLarguraListaAdjacencia {
 
 	public ResultadoBuscaLargura efetuarBuscaLargura(Map<String, Set<String>> listaAdjacencia, String primeiroVertice, String verticeParada) {
