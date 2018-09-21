@@ -1,11 +1,9 @@
 package br.furb.grafos.trabalho1.problema;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import br.furb.grafos.trabalho1.listaadjacencia.BuscaLarguraListaAdjacencia;
 import br.furb.grafos.trabalho1.listaadjacencia.ResultadoBuscaLargura;
@@ -13,7 +11,7 @@ import br.furb.grafos.trabalho1.listaadjacencia.ResultadoBuscaLargura;
 /**
  * @author ariel e sidnei
  */
-public class RatoNoLabirinto {
+public class RatoNoLabirinto extends ProblemaBase {
 
 	private static final String ENTRADA = "ENTRADA";
 	private static final String SAIDA = "SAIDA";
@@ -90,12 +88,6 @@ public class RatoNoLabirinto {
 
 		contexto.setQuantidadeVertices(vertices);
 		contexto.setQuantidadeArestas(arestas);
-	}
-
-	private List<String> getLinhasProblema(String problema) {
-		return Arrays.stream(problema.split("\n")) //
-				.map(String::trim) //
-				.collect(Collectors.toList());
 	}
 
 }
