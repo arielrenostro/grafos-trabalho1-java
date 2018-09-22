@@ -4,6 +4,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
+
+import br.furb.grafos.trabalho1.problema.exception.TemLoopBuscaProfundidadeException;
 
 /**
  * @author ariel e sidnei
@@ -27,10 +30,10 @@ public class DuduFazServico extends ProblemaBase {
 		Iterator<CasoDuduFazServico> iterator = contexto.getCasos().iterator();
 		while (iterator.hasNext()) {
 			boolean temLoop = iterator.next().isTemLoop();
-			sb.append(temLoop);
+			sb.append(temLoop ? "SIM" : "NAO");
 
 			if (iterator.hasNext()) {
-				sb.append("\n\r");
+				sb.append("\n");
 			}
 		}
 
@@ -41,7 +44,34 @@ public class DuduFazServico extends ProblemaBase {
 		List<CasoDuduFazServico> casos = contexto.getCasos();
 
 		for (CasoDuduFazServico caso : casos) {
-			Map<Integer, Set<Integer>> casos2 = caso.getCasos();
+			try {
+				resolverCaso(caso);
+			} catch (TemLoopBuscaProfundidadeException e) {
+			}
+		}
+	}
+
+	private void resolverCaso(CasoDuduFazServico caso) throws TemLoopBuscaProfundidadeException {
+		Map<Integer, Set<Integer>> dependenciasPorDocumento = caso.getDependenciasPorDocumento();
+		Stack<Integer> pilha = new Stack<>();
+
+		for (int documento : dependenciasPorDocumento.keySet()) {
+			visitar(caso, dependenciasPorDocumento, pilha, documento);
+		}
+	}
+
+	private void visitar(CasoDuduFazServico caso, Map<Integer, Set<Integer>> dependenciasPorDocumento, Stack<Integer> pilha, int documento) throws TemLoopBuscaProfundidadeException {
+		if (pilha.contains(documento)) {
+			caso.setTemLoop(true);
+			throw new TemLoopBuscaProfundidadeException();
+		}
+		pilha.push(documento);
+		Set<Integer> dependencias = dependenciasPorDocumento.get(documento);
+		if (null != dependencias) {
+			for (int dependencia : dependencias) {
+				visitar(caso, dependenciasPorDocumento, pilha, dependencia);
+				pilha.pop();
+			}
 		}
 	}
 

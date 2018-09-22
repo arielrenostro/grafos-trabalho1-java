@@ -66,6 +66,7 @@ public class MatrizAdjacenciaTest {
 
 		assertEquals("A = 3\nB = 3\nC = 3\nD = 3\nE = 3\nF = 5\nG = 5\nH = 5", operacaoMatrizAdjacencia.grausDoVertice(matrizAdjacencia));
 		assertEquals("Simples, Não dirigido, Bipartido Completo", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("O número de arestas deste grafo é: 15\nOs conjuntos encontrados no grafo são: [(A,F), (F,A), (A,G), (G,A), (A,H), (H,A), (B,F), (F,B), (B,G), (G,B), (B,H), (H,B), (C,F), (F,C), (C,G), (G,C), (C,H), (H,C), (D,F), (F,D), (D,G), (G,D), (D,H), (H,D), (E,F), (F,E), (E,G), (G,E), (E,H), (H,E)]", operacaoMatrizAdjacencia.arestasDoGrafo(matrizAdjacencia));
 	}
 
 	@Test
@@ -86,7 +87,8 @@ public class MatrizAdjacenciaTest {
 		matrizAdjacencia[5][2] = 1;
 
 		assertEquals("A = 2\nB = 2\nC = 2\nD = 2\nE = 2\nF = 2", operacaoMatrizAdjacencia.grausDoVertice(matrizAdjacencia));
-		assertEquals("Simples, Não dirigido, Bipartido", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("Simples, Não dirigido, Bipartido, Regular", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("O número de arestas deste grafo é: 6\nOs conjuntos encontrados no grafo são: [(A,D), (D,A), (A,F), (F,A), (B,D), (D,B), (B,E), (E,B), (C,E), (E,C), (C,F), (F,C)]", operacaoMatrizAdjacencia.arestasDoGrafo(matrizAdjacencia));
 	}
 
 	@Test
@@ -103,6 +105,7 @@ public class MatrizAdjacenciaTest {
 
 		assertEquals("A = E(2), S(1)\nB = E(0), S(3)\nC = E(4), S(1)\nD = E(2), S(3)", operacaoMatrizAdjacencia.grausDoVertice(matrizAdjacencia));
 		assertEquals("Multigrafo, Dirigido", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("O número de arestas deste grafo é: 8\nOs conjuntos encontrados no grafo são: [(B,A), (D,A), (A,C), (B,C), (B,C), (D,C), (C,D), (D,D)]", operacaoMatrizAdjacencia.arestasDoGrafo(matrizAdjacencia));
 	}
 
 	@Test
@@ -118,6 +121,7 @@ public class MatrizAdjacenciaTest {
 
 		assertEquals("A = E(2), S(1)\nB = E(0), S(2)\nC = E(3), S(1)\nD = E(1), S(2)", operacaoMatrizAdjacencia.grausDoVertice(matrizAdjacencia));
 		assertEquals("Simples, Dirigido", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("O número de arestas deste grafo é: 6\nOs conjuntos encontrados no grafo são: [(B,A), (D,A), (A,C), (B,C), (D,C), (C,D)]", operacaoMatrizAdjacencia.arestasDoGrafo(matrizAdjacencia));
 	}
 
 	@Test
@@ -125,7 +129,10 @@ public class MatrizAdjacenciaTest {
 		int[][] matrizAdjacencia = new int[4][4];
 
 		assertEquals("A = 0\nB = 0\nC = 0\nD = 0", operacaoMatrizAdjacencia.grausDoVertice(matrizAdjacencia));
-		assertEquals("Simples, Não dirigido, Nulo", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		//		assertEquals("Simples, Não dirigido, Nulo", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		// TODO AGUARDANDO RESPOSTA DO AURELITO A RESPEITO DE GRAFO NULO BIPARTIDO
+		assertEquals("Simples, Não dirigido, Nulo, Bipartido, Regular", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("O número de arestas deste grafo é: 0\nOs conjuntos encontrados no grafo são: []", operacaoMatrizAdjacencia.arestasDoGrafo(matrizAdjacencia));
 	}
 
 	@Test
@@ -143,7 +150,8 @@ public class MatrizAdjacenciaTest {
 		matrizAdjacencia[2][2] = 1;
 
 		assertEquals("A = 4\nB = 4\nC = 4", operacaoMatrizAdjacencia.grausDoVertice(matrizAdjacencia));
-		assertEquals("Multigrafo, Não dirigido, Completo", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("Multigrafo, Não dirigido, Completo, Regular", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("O número de arestas deste grafo é: 6\nOs conjuntos encontrados no grafo são: [(A,A), (A,A), (A,B), (B,A), (A,C), (C,A), (B,B), (B,B), (B,C), (C,B), (C,C), (C,C)]", operacaoMatrizAdjacencia.arestasDoGrafo(matrizAdjacencia));
 	}
 
 	@Test
@@ -151,14 +159,17 @@ public class MatrizAdjacenciaTest {
 		int[][] matrizAdjacencia = new int[3][3];
 
 		matrizAdjacencia[0][1] = 1;
-		matrizAdjacencia[0][2] = 1;
 		matrizAdjacencia[1][0] = 1;
-		matrizAdjacencia[1][2] = 1;
+
+		matrizAdjacencia[0][2] = 1;
 		matrizAdjacencia[2][0] = 1;
+
+		matrizAdjacencia[1][2] = 1;
 		matrizAdjacencia[2][1] = 1;
 
 		assertEquals("A = 2\nB = 2\nC = 2", operacaoMatrizAdjacencia.grausDoVertice(matrizAdjacencia));
-		assertEquals("Simples, Não dirigido, Completo", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("Simples, Não dirigido, Completo, Regular", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("O número de arestas deste grafo é: 3\nOs conjuntos encontrados no grafo são: [(A,B), (B,A), (A,C), (C,A), (B,C), (C,B)]", operacaoMatrizAdjacencia.arestasDoGrafo(matrizAdjacencia));
 	}
 
 	@Test
@@ -167,17 +178,22 @@ public class MatrizAdjacenciaTest {
 
 		matrizAdjacencia[0][1] = 1;
 		matrizAdjacencia[1][0] = 1;
+
 		matrizAdjacencia[1][2] = 1;
 		matrizAdjacencia[2][1] = 1;
+
 		matrizAdjacencia[2][3] = 1;
 		matrizAdjacencia[3][2] = 1;
+
 		matrizAdjacencia[3][4] = 1;
 		matrizAdjacencia[4][3] = 1;
+
 		matrizAdjacencia[4][0] = 1;
 		matrizAdjacencia[0][4] = 1;
 
 		assertEquals("A = 2\nB = 2\nC = 2\nD = 2\nE = 2", operacaoMatrizAdjacencia.grausDoVertice(matrizAdjacencia));
 		assertEquals("Simples, Não dirigido, Regular", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("O número de arestas deste grafo é: 5\nOs conjuntos encontrados no grafo são: [(A,B), (B,A), (A,E), (E,A), (B,C), (C,B), (C,D), (D,C), (D,E), (E,D)]", operacaoMatrizAdjacencia.arestasDoGrafo(matrizAdjacencia));
 	}
 
 	@Test
@@ -190,7 +206,8 @@ public class MatrizAdjacenciaTest {
 		matrizAdjacencia[3][0] = 1;
 
 		assertEquals("A = E(1), S(1)\nB = E(1), S(1)\nC = E(1), S(1)\nD = E(1), S(1)", operacaoMatrizAdjacencia.grausDoVertice(matrizAdjacencia));
-		assertEquals("Simples, Dirigido, Bipartido", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("Simples, Dirigido, Bipartido, Regular", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("O número de arestas deste grafo é: 4\nOs conjuntos encontrados no grafo são: [(D,A), (A,B), (B,C), (C,D)]", operacaoMatrizAdjacencia.arestasDoGrafo(matrizAdjacencia));
 	}
 
 	@Test
@@ -205,6 +222,7 @@ public class MatrizAdjacenciaTest {
 
 		assertEquals("A = E(1), S(1)\nB = E(1), S(1)\nC = E(1), S(1)\nD = E(1), S(1)\nE = E(1), S(1)", operacaoMatrizAdjacencia.grausDoVertice(matrizAdjacencia));
 		assertEquals("Simples, Dirigido, Regular", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("O número de arestas deste grafo é: 5\nOs conjuntos encontrados no grafo são: [(E,A), (A,B), (B,C), (C,D), (D,E)]", operacaoMatrizAdjacencia.arestasDoGrafo(matrizAdjacencia));
 	}
 
 	private void assertEquals(String esperado, String valor) {

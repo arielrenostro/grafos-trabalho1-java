@@ -19,32 +19,32 @@ public class ArestasGrafo  {
 
 		boolean dirigido = new TipoGrafo().isGrafoDirigidoPorMatrizAdjacencia(matrizAdjacencia);
 		List<String> listaNormal = new ArrayList<>();
-		//List<String> listaDirigido = new ArrayList<>();
-		//TODO caso queira dividir nos n dirigidos, fazer aqui
-		int linha = 0;
-		int coluna = coluna = 0;
 		int qntArestas = 0;
 		if (dirigido) {
-			for (linha = 0; linha <= matrizAdjacencia.length; linha++) {
-				for (coluna = 0; coluna <= matrizAdjacencia.length; coluna++) {
-					if (matrizAdjacencia[coluna][linha] != 0) {
-						qntArestas += matrizAdjacencia[coluna][linha];
-						listaNormal.add(nomes[linha] + "," + nomes[coluna]);
+			for (int linha = 0; linha < matrizAdjacencia.length; linha++) {
+				for (int coluna = 0; coluna < matrizAdjacencia.length; coluna++) {
+					int valor = matrizAdjacencia[coluna][linha];
+					if (valor != 0) {
+						qntArestas += valor;
+						for (int idxValor = 0; idxValor < valor; idxValor++) {
+							listaNormal.add(nomes[coluna] + "," + nomes[linha]);
+						}
 					}
 				}
 			}
 		} else {
-			for (; linha <= matrizAdjacencia.length; linha++) {
-				for (coluna = 0; coluna <= matrizAdjacencia.length; coluna++) {
+			for (int linha = 0; linha < matrizAdjacencia.length; linha++) {
+				for (int coluna = 0; coluna < matrizAdjacencia.length; coluna++) {
 					if (linha > coluna) {
 						coluna = linha;
 					}
-					if (matrizAdjacencia[coluna][linha] != 0) {
-						qntArestas += matrizAdjacencia[coluna][linha];
-						listaNormal.add(nomes[linha] + "," + nomes[coluna]);
-						listaNormal.add(nomes[coluna] + "," + nomes[linha]);
-						//listaDirigido.add(nomes[coluna] + "," + nomes[linha]);
-						//TODO caso queira dividir nos n dirigidos, fazer aqui
+					int valor = matrizAdjacencia[coluna][linha];
+					if (valor != 0) {
+						qntArestas += valor;
+						for (int idxValor = 0; idxValor < valor; idxValor++) {
+							listaNormal.add(nomes[linha] + "," + nomes[coluna]);
+							listaNormal.add(nomes[coluna] + "," + nomes[linha]);
+						}
 					}
 				}
 			}
@@ -62,10 +62,10 @@ public class ArestasGrafo  {
 			sb.append(s);
 			sb.append(")");
 			if (iterator.hasNext()) {
-				sb.append(s);
+				sb.append(", ");
 			}
 		}
 		sb.append("]");
-		return sb.toString();//TODO Alterar
+		return sb.toString();
 	}
 }

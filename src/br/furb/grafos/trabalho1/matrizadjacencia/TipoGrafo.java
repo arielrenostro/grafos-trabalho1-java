@@ -211,7 +211,8 @@ public class TipoGrafo {
 		if (isNulo) {
 			sb.append(", ");
 			sb.append(NULO);
-		} else if (isBipartido) {
+		}
+		if (isBipartido) {
 			sb.append(", ");
 			sb.append(BIPARTIDO);
 			if (isCompleto) {
@@ -221,7 +222,8 @@ public class TipoGrafo {
 		} else if (isCompleto) {
 			sb.append(", ");
 			sb.append(COMPLETO);
-		} else if (isRegular) {
+		}
+		if (isRegular) {
 			sb.append(", ");
 			sb.append(REGULAR);
 		}

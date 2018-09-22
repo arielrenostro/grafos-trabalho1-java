@@ -7,15 +7,15 @@ import java.util.Set;
 
 public class CasoDuduFazServico {
 
-	private final Map<Integer, Set<Integer>> casos = new HashMap<>();
+	private final Map<Integer, Set<Integer>> dependenciasPorDocumento = new HashMap<>();
 
-	private boolean temLoop = true;
+	private boolean temLoop = false;
 
 	public void adicionarCaso(Integer documento, Integer dependencia) {
-		Set<Integer> dependencias = casos.get(documento);
+		Set<Integer> dependencias = dependenciasPorDocumento.get(documento);
 		if (null == dependencias) {
 			dependencias = new HashSet<>();
-			casos.put(documento, dependencias);
+			dependenciasPorDocumento.put(documento, dependencias);
 		}
 		dependencias.add(dependencia);
 	}
@@ -28,8 +28,8 @@ public class CasoDuduFazServico {
 		this.temLoop = temLoop;
 	}
 
-	public Map<Integer, Set<Integer>> getCasos() {
-		return casos;
+	public Map<Integer, Set<Integer>> getDependenciasPorDocumento() {
+		return dependenciasPorDocumento;
 	}
 
 }
