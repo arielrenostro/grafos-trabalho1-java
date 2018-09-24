@@ -8,9 +8,7 @@ import br.furb.grafos.trabalho1.exception.MatrizAdjacenciaException;
 import br.furb.grafos.trabalho1.matrizadjacencia.OperacaoMatrizAdjacencia;
 
 /**
- *
  * @author ariel, sidnei
- *
  */
 public class MatrizAdjacenciaTest {
 
@@ -129,9 +127,7 @@ public class MatrizAdjacenciaTest {
 		int[][] matrizAdjacencia = new int[4][4];
 
 		assertEquals("A = 0\nB = 0\nC = 0\nD = 0", operacaoMatrizAdjacencia.grausDoVertice(matrizAdjacencia));
-		//		assertEquals("Simples, Não dirigido, Nulo", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
-		// TODO AGUARDANDO RESPOSTA DO AURELITO A RESPEITO DE GRAFO NULO BIPARTIDO
-		assertEquals("Simples, Não dirigido, Nulo, Bipartido, Regular", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
+		assertEquals("Simples, Não dirigido, Nulo, Regular", operacaoMatrizAdjacencia.tipoDoGrafo(matrizAdjacencia));
 		assertEquals("O número de arestas deste grafo é: 0\nOs conjuntos encontrados no grafo são: []", operacaoMatrizAdjacencia.arestasDoGrafo(matrizAdjacencia));
 	}
 

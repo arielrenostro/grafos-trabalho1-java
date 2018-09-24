@@ -10,9 +10,7 @@ import br.furb.grafos.trabalho1.exception.MatrizAdjacenciaException;
 import br.furb.grafos.trabalho1.utils.MatrizAdjacenciaUtils;
 
 /**
- *
  * @author ariel, sidnei
- *
  */
 public class TipoGrafo {
 
@@ -73,7 +71,7 @@ public class TipoGrafo {
 				}
 			}
 
-			if (idxLinha > 0  //
+			if (idxLinha > 0 //
 					&& ((somatorioVerticeSaidaAnterior != somatorioVerticeSaida) //
 							|| (isDirigido && somatorioVerticeEntradaAnterior != somatorioVerticeEntrada))) {
 				isRegular = false;
@@ -86,8 +84,13 @@ public class TipoGrafo {
 	}
 
 	private ResultadoBipartido isGrafoBipartidoPorMatrizAdjacencia(int[][] matrizAdjacencia) {
-		Map<Integer, Set<Integer>> listaAdjacencia = getListaIncidenciaPorMatrizAdjacencia(matrizAdjacencia);
+		Map<Integer, Set<Integer>> listaAdjacencia = getListaAdjacenciaPorMatrizAdjacencia(matrizAdjacencia);
 		Map<Integer, Set<Integer>> listaAdjacenciaParaVerificacao = new HashMap<>(listaAdjacencia);
+
+		boolean nulo = isGrafoNuloPorListaAdjacencia(listaAdjacencia);
+		if (nulo) {
+			return new ResultadoBipartido(false, false);
+		}
 
 		boolean[] azul = new boolean[matrizAdjacencia.length];
 		boolean[] vermelho = new boolean[matrizAdjacencia.length];
@@ -158,7 +161,11 @@ public class TipoGrafo {
 		return new ResultadoBipartido(true, true);
 	}
 
-	private boolean isAdjacenteNoGrupo(Map<Integer, Set<Integer>> listaAdjacencia,	boolean[] grupo) {
+	private boolean isGrafoNuloPorListaAdjacencia(Map<Integer, Set<Integer>> listaAdjacencia) {
+		return listaAdjacencia.values().parallelStream().allMatch(Set::isEmpty);
+	}
+
+	private boolean isAdjacenteNoGrupo(Map<Integer, Set<Integer>> listaAdjacencia, boolean[] grupo) {
 		Set<Integer> lista;
 		for (int idx = 0; idx < grupo.length; idx++) {
 			if (grupo[idx]) {
@@ -182,7 +189,7 @@ public class TipoGrafo {
 		return true;
 	}
 
-	private Map<Integer, Set<Integer>> getListaIncidenciaPorMatrizAdjacencia(int[][] matrizAdjacencia) {
+	private Map<Integer, Set<Integer>> getListaAdjacenciaPorMatrizAdjacencia(int[][] matrizAdjacencia) {
 		Map<Integer, Set<Integer>> listaAjacencia = new HashMap<>();
 
 		int[] colunas = null;
@@ -238,7 +245,10 @@ public class TipoGrafo {
 
 		for (int idxLinha = 0; idxLinha < matrizAdjacencia.length; idxLinha++) {
 			for (int idxColuna = 0; idxColuna < matrizAdjacencia.length; idxColuna++) {
-				if (matrizAdjacencia[idxLinha][idxColuna] != matrizAdjacencia[idxColuna][idxLinha]) { // se o inverso for diferente, é dirigido
+				if (matrizAdjacencia[idxLinha][idxColuna] != matrizAdjacencia[idxColuna][idxLinha]) { // se o inverso
+																										// for
+																										// diferente, é
+																										// dirigido
 					return true;
 				}
 			}
